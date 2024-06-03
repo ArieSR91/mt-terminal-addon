@@ -6,6 +6,7 @@ MT Manager terminal addon (no root)
 + add nano text editor
 + add tar xz extractor
 + add kali linux bashrc
++ add proot
 
 Installation:
 ```
