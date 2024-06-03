@@ -4,9 +4,9 @@ MT Manager terminal addon (no root)
 + add adb & fastboot
 + add zip & unzip
 + add nano text editor
-+ add tar xz extractor
++ add tar xz gz
 + add kali linux bashrc
-+ add proot
++ add proot (to run linux)
 
 Installation:
 ```
