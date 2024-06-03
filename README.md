@@ -10,5 +10,5 @@ MT Manager terminal addon (no root)
 
 Installation:
 ```
-curl https://github.com/ArieSR91/mt-terminal-addon/install.sh | bash
+curl https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/install.sh | bash
 ```
