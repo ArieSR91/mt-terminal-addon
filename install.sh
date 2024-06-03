@@ -1,10 +1,10 @@
 cd $PREFIX
-wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/funzip
-wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/unzip
-wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/unzipsfx
-wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/zipgrep
-wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/zipinfo
-wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/terminal-addon.zip
+wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/raw/main/funzip
+wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/raw/main/unzip
+wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/raw/main/unzipsfx
+wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/raw/main/zipgrep
+wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/raw/main/zipinfo
+wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/raw/main/terminal-addon.zip
 mv funzip $PREFIX/bin
 mv unzip $PREFIX/bin
 mv unzipsfx $PREFIX/bin
