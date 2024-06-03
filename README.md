@@ -6,3 +6,8 @@ MT Manager terminal addon (no root)
 + add nano text editor
 + add tar xz extractor
 + add kali linux bashrc
+
+Installation:
+```
+curl https://github.com/ArieSR91/mt-terminal-addon/install.sh | bash
+```
