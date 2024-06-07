@@ -24,7 +24,6 @@ cd $HOME
 ```
 
 For linux installation:
-```
 [linux](https://github.com/ArieSR91/mt-terminal-addon/tree/main/linux)
-```
+
 
