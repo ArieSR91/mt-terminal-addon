@@ -24,6 +24,9 @@ cd $HOME
 ```
 
 For linux installation:
+
 [linux](https://github.com/ArieSR91/mt-terminal-addon/tree/main/linux)
 
+For fix linux audio:
 
+[audio](https://github.com/ArieSR91/mt-terminal-addon/tree/main/audio)
