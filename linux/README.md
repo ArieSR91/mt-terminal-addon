@@ -2,7 +2,8 @@
 
 Install and configure linux on MT manager
 
-First step install linux chroot [here](https://sgp1lxdmirror01.do.letsbuildthe.cloud/images/)
+First step download linux chroot [here](https://sgp1lxdmirror01.do.letsbuildthe.cloud/images/)
+make sure you already download it
 and then create new folder to put linux chroot.
 
 Copy this command below:
