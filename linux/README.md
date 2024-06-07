@@ -11,9 +11,9 @@ cd $HOME; mkdir linux; tar xJvf /sdcard/Download/rootfs.tar.xz -C linux
 ```
 Configure your linux
 ```
-wget 
+wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/linux/configure-linux; chmod 775 configure-linux
 ```
-Setup vnc;
+Setup vnc: (run inside linux distro)
 ```
-wget
+mkdir .vnc; wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/linux/.vnc/xstartup -O $HOME/.vnc/xstartup; wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/linux/vnc -O /usr/local/bin/vnc; chmod $HOME/.vnc/xstartup /usr/local/bin/vnc
 ```
