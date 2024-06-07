@@ -1,0 +1,112 @@
+read -p "Username: " USERNAME;
+#USERNAME=xRamaVL
+read -p "Chroot folder: " CHROOT;
+#CHROOT=linux
+
+function create_launcher() {
+    LINUX_LAUNCHER=${PREFIX}/bin/runlinux
+    cat > $LINUX_LAUNCHER <<- EOF
+#!/data/user/0/bin.mt.plus/files/term/bin/bash -e
+cd \${HOME}
+unset LD_PRELOAD
+
+if [ ! -f $CHROOT/root/.version ]; then
+    touch $CHROOT/root/.version
+fi
+if [ ! -f $CHROOT/root/.hushlogin ]; then
+    touch $CHROOT/root/.hushlogin
+fi
+if [ ! -d $CHROOT/home/$USERNAME ]; then
+    mkdir $CHROOT/home/$USERNAME
+    touch $CHROOT/home/$USERNAME/.hushlogin
+fi
+
+user="$USERNAME"
+home="/home/\$user"
+start="sudo -u $USERNAME /bin/bash"
+
+if grep -q "$USERNAME" ${CHROOT}/etc/passwd; then
+    LINUXUSR="1";
+else
+    LINUXUSR="0";
+fi
+if [[ \$LINUXUSR == "0" || ("\$#" != "0" && ("\$1" == "-r" || "\$1" == "-R")) ]];then
+    user="root"
+    home="/\$user"
+    start="/bin/bash --login"
+    if [[ "\$#" != "0" && ("\$1" == "-r" || "\$1" == "-R") ]];then
+        shift
+    fi
+fi
+
+cmdline="proot \\
+        --link2symlink \\
+        --tcsetsf2tcsets \\
+        --kernel-release=3.18.120-Arie-SR91 \\
+        -0 \\
+        -r $CHROOT \\
+        -b /dev \\
+        -b /sys \\
+        -b /proc \\
+        -b /system \\
+        -b /sdcard \\
+        -b $CHROOT\$home:/dev/shm \\
+        -w \$home \\
+           /usr/bin/env -i \\
+           HOME=\$home \\
+           PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin \\
+           TERM=\$TERM \\
+           LANG=C.UTF-8 \\
+           \$start"
+
+cmd="\$@"
+if [ "\$#" == "0" ];then
+    exec \$cmdline
+else
+    \$cmdline -c "\$cmd"
+fi
+EOF
+
+    chmod 700 $LINUX_LAUNCHER
+   
+}
+
+function fix_profile_bash() {
+    if [ -f ${CHROOT}/root/.bash_profile ]; then
+        sed -i '/if/,/fi/d' "${CHROOT}/root/.bash_profile"
+    fi
+}
+
+function fix_resolv_conf() {
+    rm $CHROOT/etc/resolv.conf
+    echo "nameserver 9.9.9.9" > $CHROOT/etc/resolv.conf
+    echo "nameserver 149.112.112.112" >> $CHROOT/etc/resolv.conf
+}
+
+function fix_sudo() {
+    chmod +s $CHROOT/usr/bin/sudo
+    chmod +s $CHROOT/usr/bin/su
+	echo "$USERNAME    ALL=(ALL:ALL) ALL" > $CHROOT/etc/sudoers.d/$USERNAME
+	chmod 600 $CHROOT/etc/sudoers.d/$USERNAME
+    echo "Set disable_coredump false" > $CHROOT/etc/sudo.conf
+}
+
+function fix_uid() {
+    ## Change linux uid and gid to match that of the user
+    if grep -q "\$USERNAME" ${CHROOT}/etc/passwd; then
+        echo "User already exist"
+    else
+        runlinux -r adduser --force-badname $USERNAME
+    fi
+    USRID=$(id -u)
+    GRPID=$(id -g)
+    runlinux -r usermod -u $USRID $USERNAME 2>/dev/null
+    runlinux -r groupmod -g $GRPID $USERNAME 2>/dev/null
+}
+
+cd $HOME
+create_launcher
+fix_profile_bash
+fix_resolv_conf
+fix_sudo
+fix_uid

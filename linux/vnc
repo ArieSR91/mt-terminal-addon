@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function start_vnc()
+{
+    vncserver :0 -geometry 1280x720
+}
+
+function stop_vnc()
+{
+    vncserver -kill :0
+}
+function show_help()
+{
+echo -e "
+Usage: vnc [OPTION]
+
+Options:
+         start : start vnc server
+         stop  : stop vnc server
+"
+}
+
+case $1 in
+    start)
+        start_vnc
+        ;;
+    stop)
+        stop_vnc
+        ;;
+    *)
+        show_help
+        ;;
+esac
