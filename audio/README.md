@@ -6,3 +6,5 @@ and copy this command below
 https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/audio/pulse -O /usr/local/bin/pulse
 ```
 Usage: pulse start|stop
+
+Open the apk and click start
