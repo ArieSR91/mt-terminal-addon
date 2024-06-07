@@ -22,3 +22,9 @@ unzip -o terminal-addon.zip
 rm terminal-addon.zip
 cd $HOME
 ```
+
+For linux installation:
+```
+[linux](https://github.com/ArieSR91/mt-terminal-addon/tree/main/linux)
+```
+
