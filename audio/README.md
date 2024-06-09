@@ -2,6 +2,7 @@
 Download and install apk
 
 and copy this command below
+
 Run inside linix distro:
 ```
 wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/audio/pulse -O /usr/local/bin/pulse
