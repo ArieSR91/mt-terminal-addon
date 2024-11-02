@@ -79,8 +79,8 @@ function fix_profile_bash() {
 
 function fix_resolv_conf() {
     rm $CHROOT/etc/resolv.conf
-    echo "nameserver 9.9.9.9" > $CHROOT/etc/resolv.conf
-    echo "nameserver 149.112.112.112" >> $CHROOT/etc/resolv.conf
+    echo "nameserver 8.8.8.8" > $CHROOT/etc/resolv.conf
+    echo "nameserver 8.8.4.4" >> $CHROOT/etc/resolv.conf
 }
 
 function fix_sudo() {
