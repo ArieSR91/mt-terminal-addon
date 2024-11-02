@@ -86,7 +86,7 @@ function fix_resolv_conf() {
 function fix_sudo() {
     chmod +s $CHROOT/usr/bin/sudo
     chmod +s $CHROOT/usr/bin/su
-	echo "$USERNAME    ALL=(ALL:ALL) ALL" > $CHROOT/etc/sudoers.d/$USERNAME
+	echo "$USERNAME    ALL=(ALL:ALL) NOPASSWD:ALL" > $CHROOT/etc/sudoers.d/$USERNAME
 	chmod 600 $CHROOT/etc/sudoers.d/$USERNAME
     echo "Set disable_coredump false" > $CHROOT/etc/sudo.conf
 }
