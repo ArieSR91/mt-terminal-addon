@@ -42,7 +42,7 @@ fi
 cmdline="proot \\
         --link2symlink \\
         --tcsetsf2tcsets \\
-        --kernel-release=3.18.120-Arie-SR91 \\
+        --kernel-release=6.2.1-Arie-SR91 \\
         -0 \\
         -r $CHROOT \\
         -b /dev \\
