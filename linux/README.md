@@ -19,5 +19,5 @@ bash configure-linux
 ```
 Setup vnc: (!run inside linux distro)
 ```
-mkdir .vnc; wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/linux/.vnc/xstartup -O $HOME/.vnc/xstartup; wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/linux/vnc -O /usr/local/bin/vnc; chmod $HOME/.vnc/xstartup /usr/local/bin/vnc
+cd $HOME; mkdir .vnc; wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/linux/.vnc/xstartup -O $HOME/.vnc/xstartup; wget https://raw.githubusercontent.com/ArieSR91/mt-terminal-addon/main/linux/vnc -O /usr/local/bin/vnc; chmod 775 $HOME/.vnc/xstartup /usr/local/bin/vnc
 ```
